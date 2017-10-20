@@ -1,0 +1,262 @@
+object Form1: TForm1
+  Left = 449
+  Top = 200
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'CoP'
+  ClientHeight = 297
+  ClientWidth = 337
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Icon.Data = {
+    0000010001002020100000000000E80200001600000028000000200000004000
+    0000010004000000000080020000000000000000000000000000000000000000
+    000000008000008000000080800080000000800080008080000080808000C0C0
+    C0000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    000000000000000000000000000000000000000000000000000000000000FFFF
+    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4FFFFFFF1FFFFFFF1FFFFFFF1F
+    FFFFFF0FFFFFFFCFFFFFFF8FFFFFFF9FFFFFFF8E1FFFFFCE07FFFFCF13FFFFCF
+    C1FFFFCFF0FFFFCFF87FFFCFFC3FFFCFFE7FFFCFFE3FFFCFFE7FFFCFFD7FFFE3
+    FE7FFFE0F8FFFFF401FFFFFF8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 8
+    Top = 0
+    Width = 41
+    Height = 13
+    Caption = 'Platform:'
+  end
+  object Label5: TLabel
+    Left = 8
+    Top = 40
+    Width = 122
+    Height = 13
+    Caption = 'Offsets (Use '#39'0x'#39' for HEX):'
+  end
+  object Label6: TLabel
+    Left = 8
+    Top = 152
+    Width = 41
+    Height = 13
+    Caption = 'Pointers:'
+  end
+  object btnAbout: TButton
+    Left = 304
+    Top = 264
+    Width = 25
+    Height = 25
+    Caption = '?'
+    TabOrder = 0
+    OnClick = btnAboutClick
+  end
+  object btnGo: TButton
+    Left = 8
+    Top = 264
+    Width = 145
+    Height = 25
+    Caption = 'Calculate'
+    TabOrder = 1
+    OnClick = btnGoClick
+  end
+  object grbGBx: TGroupBox
+    Left = 160
+    Top = 0
+    Width = 169
+    Height = 233
+    Caption = 'Size'
+    TabOrder = 2
+    Visible = False
+    object rbt2byte: TRadioButton
+      Left = 8
+      Top = 16
+      Width = 65
+      Height = 17
+      Caption = '2 bytes'
+      Checked = True
+      TabOrder = 0
+      TabStop = True
+    end
+    object rbt3byte: TRadioButton
+      Left = 8
+      Top = 32
+      Width = 65
+      Height = 17
+      Caption = '3 bytes'
+      TabOrder = 1
+    end
+  end
+  object cobPlatform: TComboBox
+    Left = 8
+    Top = 16
+    Width = 145
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 3
+    Text = 'NES'
+    OnClick = cobPlatformClick
+    Items.Strings = (
+      'NES'
+      'GBx')
+  end
+  object grbNES: TGroupBox
+    Left = 160
+    Top = 0
+    Width = 169
+    Height = 233
+    Caption = 'Settings'
+    TabOrder = 4
+    object Label2: TLabel
+      Left = 8
+      Top = 16
+      Width = 39
+      Height = 13
+      Caption = 'Mapper:'
+    end
+    object Label3: TLabel
+      Left = 8
+      Top = 56
+      Width = 28
+      Height = 13
+      Caption = 'Bank:'
+    end
+    object Label4: TLabel
+      Left = 8
+      Top = 96
+      Width = 53
+      Height = 13
+      Caption = 'Composed:'
+    end
+    object cobMapper: TComboBox
+      Left = 8
+      Top = 32
+      Width = 153
+      Height = 21
+      ItemHeight = 13
+      TabOrder = 0
+      Text = 'Make select game'
+      OnClick = cobMapperClick
+    end
+    object editBank: TEdit
+      Left = 8
+      Top = 72
+      Width = 153
+      Height = 21
+      TabOrder = 1
+    end
+    object editComposed: TEdit
+      Left = 8
+      Top = 112
+      Width = 153
+      Height = 21
+      TabOrder = 2
+    end
+  end
+  object editOffset: TMemo
+    Left = 8
+    Top = 56
+    Width = 113
+    Height = 89
+    ScrollBars = ssVertical
+    TabOrder = 5
+  end
+  object editPointer: TMemo
+    Left = 8
+    Top = 168
+    Width = 113
+    Height = 89
+    Color = clBtnFace
+    ReadOnly = True
+    ScrollBars = ssVertical
+    TabOrder = 6
+  end
+  object prbProgress: TProgressBar
+    Left = 160
+    Top = 240
+    Width = 169
+    Height = 17
+    TabOrder = 7
+  end
+  object BitBtn1: TBitBtn
+    Left = 128
+    Top = 56
+    Width = 25
+    Height = 89
+    TabOrder = 8
+    OnClick = BitBtn1Click
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000130B0000130B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+      33333333333FFFFFFFFF333333000000000033333377777777773333330FFFFF
+      FFF03333337F333333373333330FFFFFFFF03333337F3FF3FFF73333330F00F0
+      00F03333F37F773777373330330FFFFFFFF03337FF7F3F3FF3F73339030F0800
+      F0F033377F7F737737373339900FFFFFFFF03FF7777F3FF3FFF70999990F00F0
+      00007777777F7737777709999990FFF0FF0377777777FF37F3730999999908F0
+      F033777777777337F73309999990FFF0033377777777FFF77333099999000000
+      3333777777777777333333399033333333333337773333333333333903333333
+      3333333773333333333333303333333333333337333333333333}
+    NumGlyphs = 2
+  end
+  object BitBtn2: TBitBtn
+    Left = 128
+    Top = 168
+    Width = 25
+    Height = 89
+    TabOrder = 9
+    OnClick = BitBtn2Click
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000130B0000130B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333303
+      333333333333337FF3333333333333903333333333333377FF33333333333399
+      03333FFFFFFFFF777FF3000000999999903377777777777777FF0FFFF0999999
+      99037F3337777777777F0FFFF099999999907F3FF777777777770F00F0999999
+      99037F773777777777730FFFF099999990337F3FF777777777330F00FFFFF099
+      03337F773333377773330FFFFFFFF09033337F3FF3FFF77733330F00F0000003
+      33337F773777777333330FFFF0FF033333337F3FF7F3733333330F08F0F03333
+      33337F7737F7333333330FFFF003333333337FFFF77333333333000000333333
+      3333777777333333333333333333333333333333333333333333}
+    NumGlyphs = 2
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = #1058#1077#1082#1089#1090#1086#1074#1099#1081' '#1092#1072#1081#1083' (*.txt)|*.txt|'#1042#1089#1077' '#1092#1072#1081#1083#1099' (*.*)|*.*'
+    Title = 'Import from...'
+    Left = 160
+    Top = 264
+  end
+  object SaveDialog1: TSaveDialog
+    Filter = #1058#1077#1082#1089#1090#1086#1074#1099#1081' '#1092#1072#1081#1083' (*.txt)|*.txt|'#1042#1089#1077' '#1092#1072#1081#1083#1099' (*.*)|*.*'
+    Title = 'Export to...'
+    Left = 192
+    Top = 264
+  end
+  object XPManifest1: TXPManifest
+    Left = 224
+    Top = 264
+  end
+end
