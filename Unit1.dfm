@@ -1,6 +1,6 @@
-object Form1: TForm1
-  Left = 449
-  Top = 200
+object frmMain: TfrmMain
+  Left = 221
+  Top = 149
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'CoP'
@@ -52,9 +52,9 @@ object Form1: TForm1
   object Label5: TLabel
     Left = 8
     Top = 40
-    Width = 122
+    Width = 36
     Height = 13
-    Caption = 'Offsets (Use '#39'0x'#39' for HEX):'
+    Caption = 'Offsets:'
   end
   object Label6: TLabel
     Left = 8
@@ -156,7 +156,7 @@ object Form1: TForm1
       Height = 21
       ItemHeight = 13
       TabOrder = 0
-      Text = 'Make select game'
+      Text = 'Select a game'
       OnClick = cobMapperClick
     end
     object editBank: TEdit
@@ -199,13 +199,13 @@ object Form1: TForm1
     Height = 17
     TabOrder = 7
   end
-  object BitBtn1: TBitBtn
+  object btnImport: TBitBtn
     Left = 128
     Top = 56
     Width = 25
     Height = 89
     TabOrder = 8
-    OnClick = BitBtn1Click
+    OnClick = btnImportClick
     Glyph.Data = {
       76010000424D7601000000000000760000002800000020000000100000000100
       04000000000000010000130B0000130B00001000000000000000000000000000
@@ -221,13 +221,13 @@ object Form1: TForm1
       3333333773333333333333303333333333333337333333333333}
     NumGlyphs = 2
   end
-  object BitBtn2: TBitBtn
+  object btnExport: TBitBtn
     Left = 128
     Top = 168
     Width = 25
     Height = 89
     TabOrder = 9
-    OnClick = BitBtn2Click
+    OnClick = btnExportClick
     Glyph.Data = {
       76010000424D7601000000000000760000002800000020000000100000000100
       04000000000000010000130B0000130B00001000000000000000000000000000
@@ -243,14 +243,14 @@ object Form1: TForm1
       3333777777333333333333333333333333333333333333333333}
     NumGlyphs = 2
   end
-  object OpenDialog1: TOpenDialog
-    Filter = #1058#1077#1082#1089#1090#1086#1074#1099#1081' '#1092#1072#1081#1083' (*.txt)|*.txt|'#1042#1089#1077' '#1092#1072#1081#1083#1099' (*.*)|*.*'
+  object dlgOpen: TOpenDialog
+    Filter = 'Text documents (*.txt)|*.txt|All files (*.*)|*.*'
     Title = 'Import from...'
     Left = 160
     Top = 264
   end
-  object SaveDialog1: TSaveDialog
-    Filter = #1058#1077#1082#1089#1090#1086#1074#1099#1081' '#1092#1072#1081#1083' (*.txt)|*.txt|'#1042#1089#1077' '#1092#1072#1081#1083#1099' (*.*)|*.*'
+  object dlgSave: TSaveDialog
+    Filter = 'Text documents (*.txt)|*.txt|All files (*.*)|*.*'
     Title = 'Export to...'
     Left = 192
     Top = 264

@@ -7,7 +7,7 @@ uses
   Dialogs, StdCtrls, ExtCtrls, ComCtrls, Buttons, VistaAltFixUnit, XPMan;
 
 type
-  TForm1 = class(TForm)
+  TfrmMain = class(TForm)
     btnAbout: TButton;
     btnGo: TButton;
     grbGBx: TGroupBox;
@@ -27,16 +27,16 @@ type
     Label5: TLabel;
     Label6: TLabel;
     prbProgress: TProgressBar;
-    BitBtn1: TBitBtn;
-    BitBtn2: TBitBtn;
-    OpenDialog1: TOpenDialog;
-    SaveDialog1: TSaveDialog;
+    btnImport: TBitBtn;
+    btnExport: TBitBtn;
+    dlgOpen: TOpenDialog;
+    dlgSave: TSaveDialog;
     XPManifest1: TXPManifest;
     procedure btnGoClick(Sender: TObject);
     procedure btnAboutClick(Sender: TObject);
     procedure cobPlatformClick(Sender: TObject);
-    procedure BitBtn1Click(Sender: TObject);
-    procedure BitBtn2Click(Sender: TObject);
+    procedure btnImportClick(Sender: TObject);
+    procedure btnExportClick(Sender: TObject);
     procedure cobMapperClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -46,14 +46,14 @@ type
   end;
 
 var
-  Form1: TForm1;
+  frmMain: TfrmMain;
   DataNES: array of array of string;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm1.btnGoClick(Sender: TObject);
+procedure TfrmMain.btnGoClick(Sender: TObject);
 Var Offset, Pointer: longint;
   Q, i: integer;
 begin
@@ -93,7 +93,7 @@ begin
   end;
 end;
 
-procedure TForm1.btnAboutClick(Sender: TObject);
+procedure TfrmMain.btnAboutClick(Sender: TObject);
 begin
   Application.MessageBox('The programm calculates the pointers.'+
   #13#10'Version - 1.3'+
@@ -102,7 +102,7 @@ begin
   #13#10'July, 2011-2014.','About',MB_OK);
 end;
 
-procedure TForm1.cobPlatformClick(Sender: TObject);
+procedure TfrmMain.cobPlatformClick(Sender: TObject);
 begin
   if cobPlatform.Text='GBx' then begin
     grbGBx.Visible:=True;
@@ -114,25 +114,25 @@ begin
   end;
 end;
 
-procedure TForm1.BitBtn1Click(Sender: TObject);
+procedure TfrmMain.btnImportClick(Sender: TObject);
 Var FName: String;
 begin
-  if OpenDialog1.Execute then begin
-    FName:=OpenDialog1.FileName;
+  if dlgOpen.Execute then begin
+    FName:=dlgOpen.FileName;
     editOffset.Lines.LoadFromFile(FName);
   end;
 end;
 
-procedure TForm1.BitBtn2Click(Sender: TObject);
+procedure TfrmMain.btnExportClick(Sender: TObject);
 Var FName: String;
 begin
-  if SaveDialog1.Execute then begin
-    FName:=SaveDialog1.FileName;
+  if dlgSave.Execute then begin
+    FName:=dlgSave.FileName;
     EditPointer.Lines.SaveToFile(FName);
   end;
 end;
 
-procedure TForm1.cobMapperClick(Sender: TObject);
+procedure TfrmMain.cobMapperClick(Sender: TObject);
 begin
   if cobMapper.ItemIndex<>High(DataNES)+1 then begin
     editBank.Text:=DataNES[cobMapper.ItemIndex,1];
@@ -144,7 +144,7 @@ begin
 
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TfrmMain.FormCreate(Sender: TObject);
 Var F: TextFile;
   S1: string[1];
   i, j: integer;

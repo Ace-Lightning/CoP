@@ -115,7 +115,7 @@ AutoIncBuild=1
 MajorVer=1
 MinorVer=3
 Release=0
-Build=19
+Build=20
 Debug=0
 PreRelease=0
 Special=0
@@ -126,7 +126,7 @@ CodePage=1251
 [Version Info Keys]
 CompanyName=Ace Lightning
 FileDescription=The programm for calculation of the pointers.
-FileVersion=1.3.0.19
+FileVersion=1.3.0.20
 InternalName=Calculation of the Pointers
 LegalCopyright=© Ace Lightning, 2011-2014
 LegalTrademarks=
